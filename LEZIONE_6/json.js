@@ -50,9 +50,19 @@ app.get('/api/v1/query' , (req, res) =>{
 
     if(search){
         filterProduct = filterProduct.filter((product) => {
-        return product.title.startsWith(search)
+        //return product.title.startsWith(search)
+        return product.title.match(search)
         })
     }
+    if(limit){
+    filterProduct = filterProduct.slice(0, limit)
+    }
+
+    if(filterProduct.length < 1){
+    return res.status(200).json({success:true, data:[] })
+
+    }
+
     
     res.status(200).json(filterProduct)
 
