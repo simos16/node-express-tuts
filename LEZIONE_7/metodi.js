@@ -5,7 +5,9 @@ const app = express()
 const PORT = 3000
 
 //middleware per risorse statiche
+//l'impostazione di public ha priorità su altre strutture eventuale
 app.use(express.static('./public'))
+
 //middleware middleware estendono l'uso degli url a tutti gli oggetti compresi sorgenti di dati
 //da oggetti innestati e da form
 //middleware json estende la gestione del formato per tutti i metodi a livello globale dell'applicazione
@@ -14,6 +16,14 @@ app.use(express.json())
 
 
 //ROUTING applicazione
+
+/*app.get('/', (req, res) =>{
+    res.sendFile(__dirname + '/public/index.html')
+})*/
+
+app.get('/entra', (req, res) =>{
+    res.sendFile(__dirname + '/public/form.html')
+})
 
 //METODO HTTP = GET
 app.get('/api/people', (req, res) =>{
@@ -60,13 +70,15 @@ app.post('/login' , (req, res) =>{
         .status(200)
         .send(`Benvenuto/a ${name}`)
     }
+    res.status(400).send('per favore aggiungi il dato')
 })
 
 //METODO HTTP PUT => /api/people/3
 app.put('/api/people/:id', (req, res) =>{
     const {id} = req.params
-    //const idT = req.params.id
     const {name} = req.body
+    
+
 
 
     const person = people.find((person) => person.id === Number(id))
@@ -84,6 +96,7 @@ app.put('/api/people/:id', (req, res) =>{
         if(person.id === Number(id)){
 
             person.name = name
+                  
         }
         return person
     })
