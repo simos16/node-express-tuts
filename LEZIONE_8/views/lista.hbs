@@ -11,11 +11,24 @@
     <!--Header-->
     {{> header }}
    
-    <h1>Ciao {{nome}}</h1>
     <h2>Il titolo è: {{titolo}}</h2>
 
-    <p>Il mio pet preferito <span><b>{{ pet }}</b></span></p>
-    {{> immagine}}
+    <div>
+        <!-- each => loop foreach data:dato / fiori:fiore-->
+        {{#each data}}
+        <h4>{{this.title}}{{this.reactions}}</h4>
+        {{/each}}
+
+        {{#each data}}
+        <p>i tags del titolo {{this.title}} sono: <b>{{this.tags}}</b></p>
+        {{/each}}
+
+    {{#each data}}
+        <img src="{{this.immagine}}"><br>
+    {{/each}}
+
+
+    </div>
 
 <!--Header-->
 {{> footer }}
