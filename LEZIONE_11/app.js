@@ -1,5 +1,5 @@
 const  MongoClient = require('mongodb').MongoClient;
-let url = "mongodb+srv://db_user:mongo_sim@mycluster.azlqk.mongodb.net/demo6?retryWrites=true";
+let url = "YOUR_CONNECTION_STRING";
 
 
 
