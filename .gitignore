@@ -31,8 +31,8 @@ coverage
 
 # Bower dependency directory (https://bower.io/)
 bower_components
-# MAC hidden filess
-**/.DS_Store
+# MAC hidden files
+.DS_Store
 
 # node-waf configuration
 .lock-wscript
